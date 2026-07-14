@@ -9,38 +9,245 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedProfesorIndexRouteImport } from './routes/_authenticated/profesor/index'
+import { Route as AuthenticatedAlumnoIndexRouteImport } from './routes/_authenticated/alumno/index'
+import { Route as AuthenticatedProfesorTemasRouteImport } from './routes/_authenticated/profesor/temas'
+import { Route as AuthenticatedProfesorPruebasRouteImport } from './routes/_authenticated/profesor/pruebas'
+import { Route as AuthenticatedProfesorEstadisticasRouteImport } from './routes/_authenticated/profesor/estadisticas'
+import { Route as AuthenticatedProfesorAlumnosRouteImport } from './routes/_authenticated/profesor/alumnos'
+import { Route as AuthenticatedAlumnoTemasRouteImport } from './routes/_authenticated/alumno/temas'
+import { Route as AuthenticatedAlumnoRankingRouteImport } from './routes/_authenticated/alumno/ranking'
+import { Route as AuthenticatedAlumnoInsigniasRouteImport } from './routes/_authenticated/alumno/insignias'
+import { Route as AuthenticatedProfesorPruebasPruebaIdRouteImport } from './routes/_authenticated/profesor/pruebas.$pruebaId'
+import { Route as AuthenticatedAlumnoTemasTemaIdRouteImport } from './routes/_authenticated/alumno/temas.$temaId'
+import { Route as AuthenticatedAlumnoRetoPruebaIdRouteImport } from './routes/_authenticated/alumno/reto.$pruebaId'
 
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProfesorIndexRoute =
+  AuthenticatedProfesorIndexRouteImport.update({
+    id: '/profesor/',
+    path: '/profesor/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAlumnoIndexRoute =
+  AuthenticatedAlumnoIndexRouteImport.update({
+    id: '/alumno/',
+    path: '/alumno/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProfesorTemasRoute =
+  AuthenticatedProfesorTemasRouteImport.update({
+    id: '/profesor/temas',
+    path: '/profesor/temas',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProfesorPruebasRoute =
+  AuthenticatedProfesorPruebasRouteImport.update({
+    id: '/profesor/pruebas',
+    path: '/profesor/pruebas',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProfesorEstadisticasRoute =
+  AuthenticatedProfesorEstadisticasRouteImport.update({
+    id: '/profesor/estadisticas',
+    path: '/profesor/estadisticas',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProfesorAlumnosRoute =
+  AuthenticatedProfesorAlumnosRouteImport.update({
+    id: '/profesor/alumnos',
+    path: '/profesor/alumnos',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAlumnoTemasRoute =
+  AuthenticatedAlumnoTemasRouteImport.update({
+    id: '/alumno/temas',
+    path: '/alumno/temas',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAlumnoRankingRoute =
+  AuthenticatedAlumnoRankingRouteImport.update({
+    id: '/alumno/ranking',
+    path: '/alumno/ranking',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAlumnoInsigniasRoute =
+  AuthenticatedAlumnoInsigniasRouteImport.update({
+    id: '/alumno/insignias',
+    path: '/alumno/insignias',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProfesorPruebasPruebaIdRoute =
+  AuthenticatedProfesorPruebasPruebaIdRouteImport.update({
+    id: '/$pruebaId',
+    path: '/$pruebaId',
+    getParentRoute: () => AuthenticatedProfesorPruebasRoute,
+  } as any)
+const AuthenticatedAlumnoTemasTemaIdRoute =
+  AuthenticatedAlumnoTemasTemaIdRouteImport.update({
+    id: '/$temaId',
+    path: '/$temaId',
+    getParentRoute: () => AuthenticatedAlumnoTemasRoute,
+  } as any)
+const AuthenticatedAlumnoRetoPruebaIdRoute =
+  AuthenticatedAlumnoRetoPruebaIdRouteImport.update({
+    id: '/alumno/reto/$pruebaId',
+    path: '/alumno/reto/$pruebaId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/alumno/insignias': typeof AuthenticatedAlumnoInsigniasRoute
+  '/alumno/ranking': typeof AuthenticatedAlumnoRankingRoute
+  '/alumno/temas': typeof AuthenticatedAlumnoTemasRouteWithChildren
+  '/profesor/alumnos': typeof AuthenticatedProfesorAlumnosRoute
+  '/profesor/estadisticas': typeof AuthenticatedProfesorEstadisticasRoute
+  '/profesor/pruebas': typeof AuthenticatedProfesorPruebasRouteWithChildren
+  '/profesor/temas': typeof AuthenticatedProfesorTemasRoute
+  '/alumno/': typeof AuthenticatedAlumnoIndexRoute
+  '/profesor/': typeof AuthenticatedProfesorIndexRoute
+  '/alumno/reto/$pruebaId': typeof AuthenticatedAlumnoRetoPruebaIdRoute
+  '/alumno/temas/$temaId': typeof AuthenticatedAlumnoTemasTemaIdRoute
+  '/profesor/pruebas/$pruebaId': typeof AuthenticatedProfesorPruebasPruebaIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/alumno/insignias': typeof AuthenticatedAlumnoInsigniasRoute
+  '/alumno/ranking': typeof AuthenticatedAlumnoRankingRoute
+  '/alumno/temas': typeof AuthenticatedAlumnoTemasRouteWithChildren
+  '/profesor/alumnos': typeof AuthenticatedProfesorAlumnosRoute
+  '/profesor/estadisticas': typeof AuthenticatedProfesorEstadisticasRoute
+  '/profesor/pruebas': typeof AuthenticatedProfesorPruebasRouteWithChildren
+  '/profesor/temas': typeof AuthenticatedProfesorTemasRoute
+  '/alumno': typeof AuthenticatedAlumnoIndexRoute
+  '/profesor': typeof AuthenticatedProfesorIndexRoute
+  '/alumno/reto/$pruebaId': typeof AuthenticatedAlumnoRetoPruebaIdRoute
+  '/alumno/temas/$temaId': typeof AuthenticatedAlumnoTemasTemaIdRoute
+  '/profesor/pruebas/$pruebaId': typeof AuthenticatedProfesorPruebasPruebaIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/alumno/insignias': typeof AuthenticatedAlumnoInsigniasRoute
+  '/_authenticated/alumno/ranking': typeof AuthenticatedAlumnoRankingRoute
+  '/_authenticated/alumno/temas': typeof AuthenticatedAlumnoTemasRouteWithChildren
+  '/_authenticated/profesor/alumnos': typeof AuthenticatedProfesorAlumnosRoute
+  '/_authenticated/profesor/estadisticas': typeof AuthenticatedProfesorEstadisticasRoute
+  '/_authenticated/profesor/pruebas': typeof AuthenticatedProfesorPruebasRouteWithChildren
+  '/_authenticated/profesor/temas': typeof AuthenticatedProfesorTemasRoute
+  '/_authenticated/alumno/': typeof AuthenticatedAlumnoIndexRoute
+  '/_authenticated/profesor/': typeof AuthenticatedProfesorIndexRoute
+  '/_authenticated/alumno/reto/$pruebaId': typeof AuthenticatedAlumnoRetoPruebaIdRoute
+  '/_authenticated/alumno/temas/$temaId': typeof AuthenticatedAlumnoTemasTemaIdRoute
+  '/_authenticated/profesor/pruebas/$pruebaId': typeof AuthenticatedProfesorPruebasPruebaIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/alumno/insignias'
+    | '/alumno/ranking'
+    | '/alumno/temas'
+    | '/profesor/alumnos'
+    | '/profesor/estadisticas'
+    | '/profesor/pruebas'
+    | '/profesor/temas'
+    | '/alumno/'
+    | '/profesor/'
+    | '/alumno/reto/$pruebaId'
+    | '/alumno/temas/$temaId'
+    | '/profesor/pruebas/$pruebaId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/alumno/insignias'
+    | '/alumno/ranking'
+    | '/alumno/temas'
+    | '/profesor/alumnos'
+    | '/profesor/estadisticas'
+    | '/profesor/pruebas'
+    | '/profesor/temas'
+    | '/alumno'
+    | '/profesor'
+    | '/alumno/reto/$pruebaId'
+    | '/alumno/temas/$temaId'
+    | '/profesor/pruebas/$pruebaId'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/alumno/insignias'
+    | '/_authenticated/alumno/ranking'
+    | '/_authenticated/alumno/temas'
+    | '/_authenticated/profesor/alumnos'
+    | '/_authenticated/profesor/estadisticas'
+    | '/_authenticated/profesor/pruebas'
+    | '/_authenticated/profesor/temas'
+    | '/_authenticated/alumno/'
+    | '/_authenticated/profesor/'
+    | '/_authenticated/alumno/reto/$pruebaId'
+    | '/_authenticated/alumno/temas/$temaId'
+    | '/_authenticated/profesor/pruebas/$pruebaId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +255,167 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profesor/': {
+      id: '/_authenticated/profesor/'
+      path: '/profesor'
+      fullPath: '/profesor/'
+      preLoaderRoute: typeof AuthenticatedProfesorIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/alumno/': {
+      id: '/_authenticated/alumno/'
+      path: '/alumno'
+      fullPath: '/alumno/'
+      preLoaderRoute: typeof AuthenticatedAlumnoIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profesor/temas': {
+      id: '/_authenticated/profesor/temas'
+      path: '/profesor/temas'
+      fullPath: '/profesor/temas'
+      preLoaderRoute: typeof AuthenticatedProfesorTemasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profesor/pruebas': {
+      id: '/_authenticated/profesor/pruebas'
+      path: '/profesor/pruebas'
+      fullPath: '/profesor/pruebas'
+      preLoaderRoute: typeof AuthenticatedProfesorPruebasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profesor/estadisticas': {
+      id: '/_authenticated/profesor/estadisticas'
+      path: '/profesor/estadisticas'
+      fullPath: '/profesor/estadisticas'
+      preLoaderRoute: typeof AuthenticatedProfesorEstadisticasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profesor/alumnos': {
+      id: '/_authenticated/profesor/alumnos'
+      path: '/profesor/alumnos'
+      fullPath: '/profesor/alumnos'
+      preLoaderRoute: typeof AuthenticatedProfesorAlumnosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/alumno/temas': {
+      id: '/_authenticated/alumno/temas'
+      path: '/alumno/temas'
+      fullPath: '/alumno/temas'
+      preLoaderRoute: typeof AuthenticatedAlumnoTemasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/alumno/ranking': {
+      id: '/_authenticated/alumno/ranking'
+      path: '/alumno/ranking'
+      fullPath: '/alumno/ranking'
+      preLoaderRoute: typeof AuthenticatedAlumnoRankingRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/alumno/insignias': {
+      id: '/_authenticated/alumno/insignias'
+      path: '/alumno/insignias'
+      fullPath: '/alumno/insignias'
+      preLoaderRoute: typeof AuthenticatedAlumnoInsigniasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profesor/pruebas/$pruebaId': {
+      id: '/_authenticated/profesor/pruebas/$pruebaId'
+      path: '/$pruebaId'
+      fullPath: '/profesor/pruebas/$pruebaId'
+      preLoaderRoute: typeof AuthenticatedProfesorPruebasPruebaIdRouteImport
+      parentRoute: typeof AuthenticatedProfesorPruebasRoute
+    }
+    '/_authenticated/alumno/temas/$temaId': {
+      id: '/_authenticated/alumno/temas/$temaId'
+      path: '/$temaId'
+      fullPath: '/alumno/temas/$temaId'
+      preLoaderRoute: typeof AuthenticatedAlumnoTemasTemaIdRouteImport
+      parentRoute: typeof AuthenticatedAlumnoTemasRoute
+    }
+    '/_authenticated/alumno/reto/$pruebaId': {
+      id: '/_authenticated/alumno/reto/$pruebaId'
+      path: '/alumno/reto/$pruebaId'
+      fullPath: '/alumno/reto/$pruebaId'
+      preLoaderRoute: typeof AuthenticatedAlumnoRetoPruebaIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedAlumnoTemasRouteChildren {
+  AuthenticatedAlumnoTemasTemaIdRoute: typeof AuthenticatedAlumnoTemasTemaIdRoute
+}
+
+const AuthenticatedAlumnoTemasRouteChildren: AuthenticatedAlumnoTemasRouteChildren =
+  {
+    AuthenticatedAlumnoTemasTemaIdRoute: AuthenticatedAlumnoTemasTemaIdRoute,
+  }
+
+const AuthenticatedAlumnoTemasRouteWithChildren =
+  AuthenticatedAlumnoTemasRoute._addFileChildren(
+    AuthenticatedAlumnoTemasRouteChildren,
+  )
+
+interface AuthenticatedProfesorPruebasRouteChildren {
+  AuthenticatedProfesorPruebasPruebaIdRoute: typeof AuthenticatedProfesorPruebasPruebaIdRoute
+}
+
+const AuthenticatedProfesorPruebasRouteChildren: AuthenticatedProfesorPruebasRouteChildren =
+  {
+    AuthenticatedProfesorPruebasPruebaIdRoute:
+      AuthenticatedProfesorPruebasPruebaIdRoute,
+  }
+
+const AuthenticatedProfesorPruebasRouteWithChildren =
+  AuthenticatedProfesorPruebasRoute._addFileChildren(
+    AuthenticatedProfesorPruebasRouteChildren,
+  )
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedAlumnoInsigniasRoute: typeof AuthenticatedAlumnoInsigniasRoute
+  AuthenticatedAlumnoRankingRoute: typeof AuthenticatedAlumnoRankingRoute
+  AuthenticatedAlumnoTemasRoute: typeof AuthenticatedAlumnoTemasRouteWithChildren
+  AuthenticatedProfesorAlumnosRoute: typeof AuthenticatedProfesorAlumnosRoute
+  AuthenticatedProfesorEstadisticasRoute: typeof AuthenticatedProfesorEstadisticasRoute
+  AuthenticatedProfesorPruebasRoute: typeof AuthenticatedProfesorPruebasRouteWithChildren
+  AuthenticatedProfesorTemasRoute: typeof AuthenticatedProfesorTemasRoute
+  AuthenticatedAlumnoIndexRoute: typeof AuthenticatedAlumnoIndexRoute
+  AuthenticatedProfesorIndexRoute: typeof AuthenticatedProfesorIndexRoute
+  AuthenticatedAlumnoRetoPruebaIdRoute: typeof AuthenticatedAlumnoRetoPruebaIdRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedAlumnoInsigniasRoute: AuthenticatedAlumnoInsigniasRoute,
+  AuthenticatedAlumnoRankingRoute: AuthenticatedAlumnoRankingRoute,
+  AuthenticatedAlumnoTemasRoute: AuthenticatedAlumnoTemasRouteWithChildren,
+  AuthenticatedProfesorAlumnosRoute: AuthenticatedProfesorAlumnosRoute,
+  AuthenticatedProfesorEstadisticasRoute:
+    AuthenticatedProfesorEstadisticasRoute,
+  AuthenticatedProfesorPruebasRoute:
+    AuthenticatedProfesorPruebasRouteWithChildren,
+  AuthenticatedProfesorTemasRoute: AuthenticatedProfesorTemasRoute,
+  AuthenticatedAlumnoIndexRoute: AuthenticatedAlumnoIndexRoute,
+  AuthenticatedProfesorIndexRoute: AuthenticatedProfesorIndexRoute,
+  AuthenticatedAlumnoRetoPruebaIdRoute: AuthenticatedAlumnoRetoPruebaIdRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

@@ -17,6 +17,7 @@ import { Route as AuthenticatedProfesorIndexRouteImport } from './routes/_authen
 import { Route as AuthenticatedAlumnoIndexRouteImport } from './routes/_authenticated/alumno/index'
 import { Route as AuthenticatedProfesorTemasRouteImport } from './routes/_authenticated/profesor/temas'
 import { Route as AuthenticatedProfesorPruebasRouteImport } from './routes/_authenticated/profesor/pruebas'
+import { Route as AuthenticatedProfesorEstadisticasRouteImport } from './routes/_authenticated/profesor/estadisticas'
 import { Route as AuthenticatedProfesorAlumnosRouteImport } from './routes/_authenticated/profesor/alumnos'
 import { Route as AuthenticatedAlumnoTemasRouteImport } from './routes/_authenticated/alumno/temas'
 import { Route as AuthenticatedAlumnoRankingRouteImport } from './routes/_authenticated/alumno/ranking'
@@ -66,6 +67,12 @@ const AuthenticatedProfesorPruebasRoute =
   AuthenticatedProfesorPruebasRouteImport.update({
     id: '/profesor/pruebas',
     path: '/profesor/pruebas',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProfesorEstadisticasRoute =
+  AuthenticatedProfesorEstadisticasRouteImport.update({
+    id: '/profesor/estadisticas',
+    path: '/profesor/estadisticas',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedProfesorAlumnosRoute =
@@ -119,6 +126,7 @@ export interface FileRoutesByFullPath {
   '/alumno/ranking': typeof AuthenticatedAlumnoRankingRoute
   '/alumno/temas': typeof AuthenticatedAlumnoTemasRouteWithChildren
   '/profesor/alumnos': typeof AuthenticatedProfesorAlumnosRoute
+  '/profesor/estadisticas': typeof AuthenticatedProfesorEstadisticasRoute
   '/profesor/pruebas': typeof AuthenticatedProfesorPruebasRouteWithChildren
   '/profesor/temas': typeof AuthenticatedProfesorTemasRoute
   '/alumno/': typeof AuthenticatedAlumnoIndexRoute
@@ -135,6 +143,7 @@ export interface FileRoutesByTo {
   '/alumno/ranking': typeof AuthenticatedAlumnoRankingRoute
   '/alumno/temas': typeof AuthenticatedAlumnoTemasRouteWithChildren
   '/profesor/alumnos': typeof AuthenticatedProfesorAlumnosRoute
+  '/profesor/estadisticas': typeof AuthenticatedProfesorEstadisticasRoute
   '/profesor/pruebas': typeof AuthenticatedProfesorPruebasRouteWithChildren
   '/profesor/temas': typeof AuthenticatedProfesorTemasRoute
   '/alumno': typeof AuthenticatedAlumnoIndexRoute
@@ -153,6 +162,7 @@ export interface FileRoutesById {
   '/_authenticated/alumno/ranking': typeof AuthenticatedAlumnoRankingRoute
   '/_authenticated/alumno/temas': typeof AuthenticatedAlumnoTemasRouteWithChildren
   '/_authenticated/profesor/alumnos': typeof AuthenticatedProfesorAlumnosRoute
+  '/_authenticated/profesor/estadisticas': typeof AuthenticatedProfesorEstadisticasRoute
   '/_authenticated/profesor/pruebas': typeof AuthenticatedProfesorPruebasRouteWithChildren
   '/_authenticated/profesor/temas': typeof AuthenticatedProfesorTemasRoute
   '/_authenticated/alumno/': typeof AuthenticatedAlumnoIndexRoute
@@ -171,6 +181,7 @@ export interface FileRouteTypes {
     | '/alumno/ranking'
     | '/alumno/temas'
     | '/profesor/alumnos'
+    | '/profesor/estadisticas'
     | '/profesor/pruebas'
     | '/profesor/temas'
     | '/alumno/'
@@ -187,6 +198,7 @@ export interface FileRouteTypes {
     | '/alumno/ranking'
     | '/alumno/temas'
     | '/profesor/alumnos'
+    | '/profesor/estadisticas'
     | '/profesor/pruebas'
     | '/profesor/temas'
     | '/alumno'
@@ -204,6 +216,7 @@ export interface FileRouteTypes {
     | '/_authenticated/alumno/ranking'
     | '/_authenticated/alumno/temas'
     | '/_authenticated/profesor/alumnos'
+    | '/_authenticated/profesor/estadisticas'
     | '/_authenticated/profesor/pruebas'
     | '/_authenticated/profesor/temas'
     | '/_authenticated/alumno/'
@@ -275,6 +288,13 @@ declare module '@tanstack/react-router' {
       path: '/profesor/pruebas'
       fullPath: '/profesor/pruebas'
       preLoaderRoute: typeof AuthenticatedProfesorPruebasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profesor/estadisticas': {
+      id: '/_authenticated/profesor/estadisticas'
+      path: '/profesor/estadisticas'
+      fullPath: '/profesor/estadisticas'
+      preLoaderRoute: typeof AuthenticatedProfesorEstadisticasRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/profesor/alumnos': {
@@ -364,6 +384,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAlumnoRankingRoute: typeof AuthenticatedAlumnoRankingRoute
   AuthenticatedAlumnoTemasRoute: typeof AuthenticatedAlumnoTemasRouteWithChildren
   AuthenticatedProfesorAlumnosRoute: typeof AuthenticatedProfesorAlumnosRoute
+  AuthenticatedProfesorEstadisticasRoute: typeof AuthenticatedProfesorEstadisticasRoute
   AuthenticatedProfesorPruebasRoute: typeof AuthenticatedProfesorPruebasRouteWithChildren
   AuthenticatedProfesorTemasRoute: typeof AuthenticatedProfesorTemasRoute
   AuthenticatedAlumnoIndexRoute: typeof AuthenticatedAlumnoIndexRoute
@@ -377,6 +398,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAlumnoRankingRoute: AuthenticatedAlumnoRankingRoute,
   AuthenticatedAlumnoTemasRoute: AuthenticatedAlumnoTemasRouteWithChildren,
   AuthenticatedProfesorAlumnosRoute: AuthenticatedProfesorAlumnosRoute,
+  AuthenticatedProfesorEstadisticasRoute:
+    AuthenticatedProfesorEstadisticasRoute,
   AuthenticatedProfesorPruebasRoute:
     AuthenticatedProfesorPruebasRouteWithChildren,
   AuthenticatedProfesorTemasRoute: AuthenticatedProfesorTemasRoute,

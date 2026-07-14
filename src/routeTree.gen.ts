@@ -17,6 +17,7 @@ import { Route as AuthenticatedProfesorIndexRouteImport } from './routes/_authen
 import { Route as AuthenticatedAlumnoIndexRouteImport } from './routes/_authenticated/alumno/index'
 import { Route as AuthenticatedProfesorTemasRouteImport } from './routes/_authenticated/profesor/temas'
 import { Route as AuthenticatedProfesorPruebasRouteImport } from './routes/_authenticated/profesor/pruebas'
+import { Route as AuthenticatedProfesorAlumnosRouteImport } from './routes/_authenticated/profesor/alumnos'
 import { Route as AuthenticatedAlumnoTemasRouteImport } from './routes/_authenticated/alumno/temas'
 import { Route as AuthenticatedAlumnoRankingRouteImport } from './routes/_authenticated/alumno/ranking'
 import { Route as AuthenticatedAlumnoInsigniasRouteImport } from './routes/_authenticated/alumno/insignias'
@@ -67,6 +68,12 @@ const AuthenticatedProfesorPruebasRoute =
     path: '/profesor/pruebas',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedProfesorAlumnosRoute =
+  AuthenticatedProfesorAlumnosRouteImport.update({
+    id: '/profesor/alumnos',
+    path: '/profesor/alumnos',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedAlumnoTemasRoute =
   AuthenticatedAlumnoTemasRouteImport.update({
     id: '/alumno/temas',
@@ -111,6 +118,7 @@ export interface FileRoutesByFullPath {
   '/alumno/insignias': typeof AuthenticatedAlumnoInsigniasRoute
   '/alumno/ranking': typeof AuthenticatedAlumnoRankingRoute
   '/alumno/temas': typeof AuthenticatedAlumnoTemasRouteWithChildren
+  '/profesor/alumnos': typeof AuthenticatedProfesorAlumnosRoute
   '/profesor/pruebas': typeof AuthenticatedProfesorPruebasRouteWithChildren
   '/profesor/temas': typeof AuthenticatedProfesorTemasRoute
   '/alumno/': typeof AuthenticatedAlumnoIndexRoute
@@ -126,6 +134,7 @@ export interface FileRoutesByTo {
   '/alumno/insignias': typeof AuthenticatedAlumnoInsigniasRoute
   '/alumno/ranking': typeof AuthenticatedAlumnoRankingRoute
   '/alumno/temas': typeof AuthenticatedAlumnoTemasRouteWithChildren
+  '/profesor/alumnos': typeof AuthenticatedProfesorAlumnosRoute
   '/profesor/pruebas': typeof AuthenticatedProfesorPruebasRouteWithChildren
   '/profesor/temas': typeof AuthenticatedProfesorTemasRoute
   '/alumno': typeof AuthenticatedAlumnoIndexRoute
@@ -143,6 +152,7 @@ export interface FileRoutesById {
   '/_authenticated/alumno/insignias': typeof AuthenticatedAlumnoInsigniasRoute
   '/_authenticated/alumno/ranking': typeof AuthenticatedAlumnoRankingRoute
   '/_authenticated/alumno/temas': typeof AuthenticatedAlumnoTemasRouteWithChildren
+  '/_authenticated/profesor/alumnos': typeof AuthenticatedProfesorAlumnosRoute
   '/_authenticated/profesor/pruebas': typeof AuthenticatedProfesorPruebasRouteWithChildren
   '/_authenticated/profesor/temas': typeof AuthenticatedProfesorTemasRoute
   '/_authenticated/alumno/': typeof AuthenticatedAlumnoIndexRoute
@@ -160,6 +170,7 @@ export interface FileRouteTypes {
     | '/alumno/insignias'
     | '/alumno/ranking'
     | '/alumno/temas'
+    | '/profesor/alumnos'
     | '/profesor/pruebas'
     | '/profesor/temas'
     | '/alumno/'
@@ -175,6 +186,7 @@ export interface FileRouteTypes {
     | '/alumno/insignias'
     | '/alumno/ranking'
     | '/alumno/temas'
+    | '/profesor/alumnos'
     | '/profesor/pruebas'
     | '/profesor/temas'
     | '/alumno'
@@ -191,6 +203,7 @@ export interface FileRouteTypes {
     | '/_authenticated/alumno/insignias'
     | '/_authenticated/alumno/ranking'
     | '/_authenticated/alumno/temas'
+    | '/_authenticated/profesor/alumnos'
     | '/_authenticated/profesor/pruebas'
     | '/_authenticated/profesor/temas'
     | '/_authenticated/alumno/'
@@ -262,6 +275,13 @@ declare module '@tanstack/react-router' {
       path: '/profesor/pruebas'
       fullPath: '/profesor/pruebas'
       preLoaderRoute: typeof AuthenticatedProfesorPruebasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profesor/alumnos': {
+      id: '/_authenticated/profesor/alumnos'
+      path: '/profesor/alumnos'
+      fullPath: '/profesor/alumnos'
+      preLoaderRoute: typeof AuthenticatedProfesorAlumnosRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/alumno/temas': {
@@ -343,6 +363,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAlumnoInsigniasRoute: typeof AuthenticatedAlumnoInsigniasRoute
   AuthenticatedAlumnoRankingRoute: typeof AuthenticatedAlumnoRankingRoute
   AuthenticatedAlumnoTemasRoute: typeof AuthenticatedAlumnoTemasRouteWithChildren
+  AuthenticatedProfesorAlumnosRoute: typeof AuthenticatedProfesorAlumnosRoute
   AuthenticatedProfesorPruebasRoute: typeof AuthenticatedProfesorPruebasRouteWithChildren
   AuthenticatedProfesorTemasRoute: typeof AuthenticatedProfesorTemasRoute
   AuthenticatedAlumnoIndexRoute: typeof AuthenticatedAlumnoIndexRoute
@@ -355,6 +376,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAlumnoInsigniasRoute: AuthenticatedAlumnoInsigniasRoute,
   AuthenticatedAlumnoRankingRoute: AuthenticatedAlumnoRankingRoute,
   AuthenticatedAlumnoTemasRoute: AuthenticatedAlumnoTemasRouteWithChildren,
+  AuthenticatedProfesorAlumnosRoute: AuthenticatedProfesorAlumnosRoute,
   AuthenticatedProfesorPruebasRoute:
     AuthenticatedProfesorPruebasRouteWithChildren,
   AuthenticatedProfesorTemasRoute: AuthenticatedProfesorTemasRoute,

@@ -1,6 +1,6 @@
 import { Link, useNavigate, useRouter } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
-import logo from "@/assets/hispania-quest-logo.jpg.asset.json";
+
 import { Coins, LogOut, Sparkles } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -32,7 +32,7 @@ export function AppShell({
     <div className="mx-auto flex min-h-dvh max-w-7xl flex-col px-4 py-6 sm:px-6">
       <header className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo.url} alt="Hispania Quest" className="h-10 w-10 rounded-xl object-contain bg-white/80 shadow-glow" />
+          <img src="/Hispania-Favicon.png" alt="Hispania Quest" className="h-10 w-10 rounded-xl object-contain bg-white/80 shadow-glow" />
           <div className="min-w-0">
             <div className="font-display text-lg font-black leading-none">Hispania Quest</div>
             {subtitle && <div className="text-xs text-muted-foreground">{subtitle}</div>}

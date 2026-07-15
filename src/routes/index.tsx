@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { GlassPanel } from "@/components/glass-panel";
+import logo from "@/assets/hispania-quest-logo.jpg.asset.json";
 import {
   Award,
   BookOpen,
@@ -21,10 +22,8 @@ function Landing() {
       {/* Nav */}
       <header className="mb-10 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand text-primary-foreground shadow-glow">
-            <span className="text-lg font-black">HQ</span>
-          </div>
-          <span className="font-display text-lg font-black">Historia Quest</span>
+          <img src={logo.url} alt="Hispania Quest" className="h-10 w-10 rounded-xl object-contain bg-white/80 shadow-glow" />
+          <span className="font-display text-lg font-black">Hispania Quest</span>
         </div>
         <Link
           to="/auth"
@@ -159,7 +158,7 @@ function Landing() {
       </section>
 
       <footer className="pb-8 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Historia Quest · Hecho para aprender jugando.
+        © {new Date().getFullYear()} Hispania Quest · Hecho para aprender jugando.
       </footer>
     </main>
   );

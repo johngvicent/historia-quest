@@ -1,4 +1,4 @@
-// Historia Quest — utilidades de gamificación
+// Hispania Quest — utilidades de gamificación
 
 export const LEVEL_THRESHOLDS = [0, 100, 250, 500, 1000, 1500, 2100, 2800, 3600, 4500, 5500];
 

@@ -76,14 +76,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Historia Quest — Aprende Historia de España jugando" },
+      { title: "Hispania Quest — Aprende Historia de España jugando" },
       {
         name: "description",
         content:
-          "Historia Quest es una plataforma gamificada para aprender Historia de España con retos, XP, insignias y rankings, pensada para alumnado y profesorado.",
+          "Hispania Quest es una plataforma gamificada para aprender Historia de España con retos, XP, insignias y rankings, pensada para alumnado y profesorado.",
       },
-      { name: "author", content: "Historia Quest" },
-      { property: "og:title", content: "Historia Quest — Aprende Historia de España jugando" },
+      { name: "author", content: "Hispania Quest" },
+      { property: "og:title", content: "Hispania Quest — Aprende Historia de España jugando" },
       {
         property: "og:description",
         content: "Retos gamificados de Historia de España para clase.",

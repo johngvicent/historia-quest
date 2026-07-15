@@ -24,6 +24,7 @@ import { Route as AuthenticatedAlumnoRankingRouteImport } from './routes/_authen
 import { Route as AuthenticatedAlumnoInsigniasRouteImport } from './routes/_authenticated/alumno/insignias'
 import { Route as AuthenticatedProfesorPruebasPruebaIdRouteImport } from './routes/_authenticated/profesor/pruebas.$pruebaId'
 import { Route as AuthenticatedAlumnoTemasTemaIdRouteImport } from './routes/_authenticated/alumno/temas.$temaId'
+import { Route as AuthenticatedAlumnoSwipeTemaIdRouteImport } from './routes/_authenticated/alumno/swipe.$temaId'
 import { Route as AuthenticatedAlumnoRetoPruebaIdRouteImport } from './routes/_authenticated/alumno/reto.$pruebaId'
 
 const AuthRoute = AuthRouteImport.update({
@@ -111,6 +112,12 @@ const AuthenticatedAlumnoTemasTemaIdRoute =
     path: '/$temaId',
     getParentRoute: () => AuthenticatedAlumnoTemasRoute,
   } as any)
+const AuthenticatedAlumnoSwipeTemaIdRoute =
+  AuthenticatedAlumnoSwipeTemaIdRouteImport.update({
+    id: '/alumno/swipe/$temaId',
+    path: '/alumno/swipe/$temaId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedAlumnoRetoPruebaIdRoute =
   AuthenticatedAlumnoRetoPruebaIdRouteImport.update({
     id: '/alumno/reto/$pruebaId',
@@ -132,6 +139,7 @@ export interface FileRoutesByFullPath {
   '/alumno/': typeof AuthenticatedAlumnoIndexRoute
   '/profesor/': typeof AuthenticatedProfesorIndexRoute
   '/alumno/reto/$pruebaId': typeof AuthenticatedAlumnoRetoPruebaIdRoute
+  '/alumno/swipe/$temaId': typeof AuthenticatedAlumnoSwipeTemaIdRoute
   '/alumno/temas/$temaId': typeof AuthenticatedAlumnoTemasTemaIdRoute
   '/profesor/pruebas/$pruebaId': typeof AuthenticatedProfesorPruebasPruebaIdRoute
 }
@@ -149,6 +157,7 @@ export interface FileRoutesByTo {
   '/alumno': typeof AuthenticatedAlumnoIndexRoute
   '/profesor': typeof AuthenticatedProfesorIndexRoute
   '/alumno/reto/$pruebaId': typeof AuthenticatedAlumnoRetoPruebaIdRoute
+  '/alumno/swipe/$temaId': typeof AuthenticatedAlumnoSwipeTemaIdRoute
   '/alumno/temas/$temaId': typeof AuthenticatedAlumnoTemasTemaIdRoute
   '/profesor/pruebas/$pruebaId': typeof AuthenticatedProfesorPruebasPruebaIdRoute
 }
@@ -168,6 +177,7 @@ export interface FileRoutesById {
   '/_authenticated/alumno/': typeof AuthenticatedAlumnoIndexRoute
   '/_authenticated/profesor/': typeof AuthenticatedProfesorIndexRoute
   '/_authenticated/alumno/reto/$pruebaId': typeof AuthenticatedAlumnoRetoPruebaIdRoute
+  '/_authenticated/alumno/swipe/$temaId': typeof AuthenticatedAlumnoSwipeTemaIdRoute
   '/_authenticated/alumno/temas/$temaId': typeof AuthenticatedAlumnoTemasTemaIdRoute
   '/_authenticated/profesor/pruebas/$pruebaId': typeof AuthenticatedProfesorPruebasPruebaIdRoute
 }
@@ -187,6 +197,7 @@ export interface FileRouteTypes {
     | '/alumno/'
     | '/profesor/'
     | '/alumno/reto/$pruebaId'
+    | '/alumno/swipe/$temaId'
     | '/alumno/temas/$temaId'
     | '/profesor/pruebas/$pruebaId'
   fileRoutesByTo: FileRoutesByTo
@@ -204,6 +215,7 @@ export interface FileRouteTypes {
     | '/alumno'
     | '/profesor'
     | '/alumno/reto/$pruebaId'
+    | '/alumno/swipe/$temaId'
     | '/alumno/temas/$temaId'
     | '/profesor/pruebas/$pruebaId'
   id:
@@ -222,6 +234,7 @@ export interface FileRouteTypes {
     | '/_authenticated/alumno/'
     | '/_authenticated/profesor/'
     | '/_authenticated/alumno/reto/$pruebaId'
+    | '/_authenticated/alumno/swipe/$temaId'
     | '/_authenticated/alumno/temas/$temaId'
     | '/_authenticated/profesor/pruebas/$pruebaId'
   fileRoutesById: FileRoutesById
@@ -339,6 +352,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAlumnoTemasTemaIdRouteImport
       parentRoute: typeof AuthenticatedAlumnoTemasRoute
     }
+    '/_authenticated/alumno/swipe/$temaId': {
+      id: '/_authenticated/alumno/swipe/$temaId'
+      path: '/alumno/swipe/$temaId'
+      fullPath: '/alumno/swipe/$temaId'
+      preLoaderRoute: typeof AuthenticatedAlumnoSwipeTemaIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/alumno/reto/$pruebaId': {
       id: '/_authenticated/alumno/reto/$pruebaId'
       path: '/alumno/reto/$pruebaId'
@@ -390,6 +410,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAlumnoIndexRoute: typeof AuthenticatedAlumnoIndexRoute
   AuthenticatedProfesorIndexRoute: typeof AuthenticatedProfesorIndexRoute
   AuthenticatedAlumnoRetoPruebaIdRoute: typeof AuthenticatedAlumnoRetoPruebaIdRoute
+  AuthenticatedAlumnoSwipeTemaIdRoute: typeof AuthenticatedAlumnoSwipeTemaIdRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -406,6 +427,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAlumnoIndexRoute: AuthenticatedAlumnoIndexRoute,
   AuthenticatedProfesorIndexRoute: AuthenticatedProfesorIndexRoute,
   AuthenticatedAlumnoRetoPruebaIdRoute: AuthenticatedAlumnoRetoPruebaIdRoute,
+  AuthenticatedAlumnoSwipeTemaIdRoute: AuthenticatedAlumnoSwipeTemaIdRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

@@ -5,7 +5,7 @@ import { AppShell } from "@/components/app-shell";
 import { GlassPanel } from "@/components/glass-panel";
 import { ALUMNO_NAV } from "@/components/nav-items";
 import { DIFICULTAD_COLOR, DIFICULTAD_LABEL, periodoGradient } from "@/lib/gamification";
-import { Clock, Coins, Play, Sparkles } from "lucide-react";
+import { Clock, Coins, Play, Sparkles, ArrowLeftRight } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/alumno/temas/$temaId")({
   loader: async ({ params, context }) => {
@@ -32,18 +32,21 @@ function TemaPage() {
   const doneMap = new Map(data.resultados.map((r) => [r.prueba_id, r]));
 
   return (
-    <AppShell
-      title={data.tema.titulo}
-      subtitle="Retos del tema"
-      nav={ALUMNO_NAV}
-      user={me.profile}
-    >
+    <AppShell title={data.tema.titulo} subtitle="Retos del tema" nav={ALUMNO_NAV} user={me.profile}>
       <GlassPanel
         strong
         className={`mb-6 overflow-hidden bg-gradient-to-br ${periodoGradient(data.tema.periodo)} p-6 text-white`}
       >
         <p className="max-w-2xl text-sm opacity-90">{data.tema.descripcion}</p>
       </GlassPanel>
+
+      <Link
+        to="/alumno/swipe/$temaId"
+        params={{ temaId }}
+        className="mb-6 inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-95"
+      >
+        <ArrowLeftRight className="h-4 w-4" /> Modo Swipe
+      </Link>
 
       <div className="grid gap-4 sm:grid-cols-2">
         {data.pruebas.map((p) => {

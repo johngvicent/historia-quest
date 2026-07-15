@@ -30,7 +30,8 @@ function TemasPage() {
   const { data: me } = useSuspenseQuery(profileOptions);
 
   const pruebasByTema = new Map<string, number>();
-  for (const p of data.pruebas) pruebasByTema.set(p.tema_id, (pruebasByTema.get(p.tema_id) ?? 0) + 1);
+  for (const p of data.pruebas)
+    pruebasByTema.set(p.tema_id, (pruebasByTema.get(p.tema_id) ?? 0) + 1);
   const doneByPrueba = new Set(data.resultados.map((r) => r.prueba_id));
 
   return (
@@ -49,7 +50,11 @@ function TemasPage() {
           return (
             <Link
               key={t.id}
-              to="/alumno/temas/$temaId"
+              to={
+                t.id === "22222222-2222-2222-2222-222222222222"
+                  ? "/alumno/swipe/$temaId"
+                  : "/alumno/temas/$temaId"
+              }
               params={{ temaId: t.id }}
               className="group block"
             >

@@ -115,7 +115,12 @@
   --sidebar-border: oklch(0.9 0.02 220 / 60%);
   --sidebar-ring: oklch(0.72 0.19 45);
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.82 0.16 55) 0%, oklch(0.72 0.19 45) 45%, oklch(0.72 0.13 210) 100%);
+  --gradient-hero: linear-gradient(
+    135deg,
+    oklch(0.82 0.16 55) 0%,
+    oklch(0.72 0.19 45) 45%,
+    oklch(0.72 0.13 210) 100%
+  );
   --gradient-brand: linear-gradient(135deg, oklch(0.72 0.19 45), oklch(0.72 0.13 210));
   --shadow-glow: 0 20px 60px -20px color-mix(in oklab, oklch(0.72 0.19 45) 45%, transparent);
 }
@@ -186,24 +191,70 @@
   box-shadow: var(--shadow-glow);
 }
 
+/* ── Swipe card animations ── */
+@keyframes fly-right {
+  to {
+    transform: translateX(150%) rotate(20deg);
+    opacity: 0;
+  }
+}
+@keyframes fly-left {
+  to {
+    transform: translateX(-150%) rotate(-20deg);
+    opacity: 0;
+  }
+}
+@keyframes pop-in {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes float-up {
+  to {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
   }
-  html, body {
+  html,
+  body {
     font-family: var(--font-sans);
   }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     background-image:
-      radial-gradient(circle at 10% 10%, color-mix(in oklab, oklch(0.82 0.16 55) 22%, transparent), transparent 50%),
-      radial-gradient(circle at 90% 20%, color-mix(in oklab, oklch(0.72 0.13 210) 22%, transparent), transparent 55%),
-      radial-gradient(circle at 50% 90%, color-mix(in oklab, oklch(0.88 0.08 200) 30%, transparent), transparent 60%);
+      radial-gradient(
+        circle at 10% 10%,
+        color-mix(in oklab, oklch(0.82 0.16 55) 22%, transparent),
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 90% 20%,
+        color-mix(in oklab, oklch(0.72 0.13 210) 22%, transparent),
+        transparent 55%
+      ),
+      radial-gradient(
+        circle at 50% 90%,
+        color-mix(in oklab, oklch(0.88 0.08 200) 30%, transparent),
+        transparent 60%
+      );
     background-attachment: fixed;
     min-height: 100dvh;
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: -0.01em;
   }

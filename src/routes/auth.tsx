@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { GraduationCap, ShieldCheck } from "lucide-react";
+import logo from "@/assets/hispania-quest-logo.jpg.asset.json";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -73,9 +74,7 @@ function AuthPage() {
       </Link>
       <GlassPanel strong className="w-full max-w-md p-8 sm:p-10">
         <div className="mb-6 text-center">
-          <div className="mx-auto mb-3 grid h-14 w-14 place-items-center rounded-2xl bg-brand text-primary-foreground shadow-glow">
-            <span className="text-2xl font-black">HQ</span>
-          </div>
+          <img src={logo.url} alt="Hispania Quest" className="mx-auto mb-3 h-16 w-16 rounded-2xl object-contain bg-white/80 shadow-glow" />
           <h1 className="text-2xl font-black">Hispania Quest</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             {mode === "login" ? "Inicia sesión para continuar" : "Crea tu cuenta y empieza a jugar"}

@@ -12,8 +12,8 @@ import { GraduationCap, ShieldCheck } from "lucide-react";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Acceso — Historia Quest" },
-      { name: "description", content: "Inicia sesión o regístrate en Historia Quest." },
+      { title: "Acceso — Hispania Quest" },
+      { name: "description", content: "Inicia sesión o regístrate en Hispania Quest." },
     ],
   }),
   component: AuthPage,
@@ -76,7 +76,7 @@ function AuthPage() {
           <div className="mx-auto mb-3 grid h-14 w-14 place-items-center rounded-2xl bg-brand text-primary-foreground shadow-glow">
             <span className="text-2xl font-black">HQ</span>
           </div>
-          <h1 className="text-2xl font-black">Historia Quest</h1>
+          <h1 className="text-2xl font-black">Hispania Quest</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             {mode === "login" ? "Inicia sesión para continuar" : "Crea tu cuenta y empieza a jugar"}
           </p>

@@ -35,7 +35,7 @@ export function AppShell({
             <span className="text-base font-black">HQ</span>
           </div>
           <div className="min-w-0">
-            <div className="font-display text-lg font-black leading-none">Historia Quest</div>
+            <div className="font-display text-lg font-black leading-none">Hispania Quest</div>
             {subtitle && <div className="text-xs text-muted-foreground">{subtitle}</div>}
           </div>
         </Link>

@@ -24,7 +24,7 @@ function Landing() {
           <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand text-primary-foreground shadow-glow">
             <span className="text-lg font-black">HQ</span>
           </div>
-          <span className="font-display text-lg font-black">Historia Quest</span>
+          <span className="font-display text-lg font-black">Hispania Quest</span>
         </div>
         <Link
           to="/auth"
@@ -159,7 +159,7 @@ function Landing() {
       </section>
 
       <footer className="pb-8 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Historia Quest · Hecho para aprender jugando.
+        © {new Date().getFullYear()} Hispania Quest · Hecho para aprender jugando.
       </footer>
     </main>
   );
